@@ -14,6 +14,7 @@ app.get('/posts', (req, res)=>{
     res.send(posts);
 })
 app.post('/posts', (req, res)=>{
+    console.log("running")
     const id = randomBytes(4).toString('hex')
     const {title} = req.body
     posts[id]={id, title};
