@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors');
 const {randomBytes}  = require('crypto')
 const bodyParser = require('body-parser')
 const app = express()
@@ -7,6 +8,7 @@ const port = process.env.PORT || 4000;
 
 //Support parsing of application /json type post data
 app.use(bodyParser.json());
+app.use(cors());
 
 const posts = {};
 

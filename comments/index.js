@@ -1,13 +1,14 @@
 const express = require('express')
 const {randomBytes}  = require('crypto')
 const bodyParser = require('body-parser')
+const cors = require('cors');
 const app = express()
 
 const port = process.env.PORT || 4001;
 
 //Support parsing of application /json type post data
 app.use(bodyParser.json());
-
+app.use(cors())
 const commentsByPostID = {
 }
 app.get('/posts/:id/comments', (req, res)=>{
@@ -15,7 +16,7 @@ app.get('/posts/:id/comments', (req, res)=>{
 });
 
 app.post('/posts/:id/comments', (req, res)=>{
-    console.log("running? ")
+   
     const commentID = randomBytes(4).toString('hex');
     const contents = req.body.contents;
     const comments = commentsByPostID[req.params.id] || [];
