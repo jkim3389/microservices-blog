@@ -1,0 +1,31 @@
+apiVersion : apps/v1
+kind : Deployment
+metadata : 
+  name : comments-defl
+spec : 
+  #number of pods that we want to create running particular image
+  replicas : 1
+  selector : 
+    matchLabels:
+      app : comments
+  template : 
+    metadata : 
+      labels : 
+        app : comments
+    spec : 
+      containers : 
+        - name : comments
+          image : justin1989kor/comments
+---
+apiVersion : v1
+kind : Service
+metadata :
+  name : comments-srv
+spec: 
+  selector :
+    app : comments
+  ports : 
+    - name : comments
+      protocol : TCP
+      port : 4001
+      targetPort : 4001

@@ -1,0 +1,16 @@
+#K8s is extensible.so we can add in our own custom objects. This apiVersion specfies the set of objects we want K8s to look at
+apiVersion : v1
+#type of object we want to create
+kind : Pod
+#config options for the object that we are about to create
+metadata :
+  #When the pod is created, give it a name of "post"
+  name : post
+#The exact attributes we want to apply to the object we are about to create
+spec : 
+  #we can create multiple containers in one pod
+  containers :
+      #container's name 
+    - name : post
+      #exact image that we want to use
+      image : strayhat0229/post:0.0.1

@@ -22,7 +22,7 @@ app.post('/posts', async (req, res)=>{
       const id = randomBytes(4).toString('hex')
     const {title} = req.body
     posts[id]={id, title};
-    await axios.post('http://localhost:4005/events', {
+    await axios.post('http://event-bus-srv:4005/events', {
         type : "PostCreated", 
         data :{
             id, title
@@ -36,5 +36,6 @@ app.post('/events', (req, res)=>{
     res.send({});
 })
 app.listen(port, ()=>{
+    console.log("changed happen v5")
     console.log("post server is running...at port : " + port)
 });

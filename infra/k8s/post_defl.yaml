@@ -1,0 +1,31 @@
+apiVersion : apps/v1
+kind : Deployment
+metadata : 
+  name : post-defl
+spec : 
+  #number of pods that we want to create running particular image
+  replicas : 1
+  selector : 
+    matchLabels:
+      app : post
+  template : 
+    metadata : 
+      labels : 
+        app : post
+    spec : 
+      containers : 
+        - name : post
+          image : justin1989kor/post
+---
+apiVersion : v1
+kind : Service
+metadata :
+  name : post-clusterip-srv
+spec: 
+  selector :
+    app : post
+  ports : 
+    - name : post
+      protocol : TCP
+      port : 4000
+      targetPort : 4000
