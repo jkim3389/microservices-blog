@@ -35,6 +35,6 @@ app.post('/events', (req, res)=>{
     res.send({});
 })
 app.listen(port, ()=>{
-    console.log("changed happen v5")
+
     console.log("post server is running...at port : " + port)
 });
